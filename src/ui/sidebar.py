@@ -90,7 +90,14 @@ def render_sidebar() -> tuple:
             format_func=lambda x: "Expectancy (highest $ per trade)" if x == "expectancy_r" else "Win rate (closest to 100%)",
         )
         st.markdown("Data")
-        data_source = st.selectbox("Source", ["yahoo", "databento"], index=0, label_visibility="collapsed")
+        data_source = st.selectbox(
+            "Source",
+            ["yahoo", "databento"],
+            index=0,
+            format_func=lambda x: "Yahoo (free)" if x == "yahoo" else "Databento (paid)",
+            help="Yahoo is free; no API key needed. Databento requires a paid subscription.",
+            label_visibility="collapsed",
+        )
         interval = st.selectbox("Interval", ["1m", "2m", "5m", "15m", "30m", "60m"], index=2)
         refresh_cache = st.checkbox("Refresh cache", value=False)
         warning = _yahoo_intraday_limit_warning(interval, lookback_days)
