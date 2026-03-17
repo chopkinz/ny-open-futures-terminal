@@ -31,10 +31,15 @@ data/cache/
 *.parquet
 data/*.parquet
 
-# Env and secrets
+# Env and secrets (never commit API keys)
 .env
+.env.*
+!.env.example
+!engine/.env.example
 .env.local
 .streamlit/secrets.toml
+web/.env.local
+engine/.env
 
 # IDE and OS
 .idea/
