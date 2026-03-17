@@ -26,7 +26,8 @@ cargo run
 ```
 
 API: **http://localhost:3001** (configurable via `PORT`).  
-`GET /health` → `{"status":"ok","service":"jarvis-engine"}`.
+- `GET /health` → `{"status":"ok","service":"jarvis-engine"}`.  
+- `GET /api/session/today` → today's NY session date and OR/trade-window bounds in UTC (ISO). Frontend converts to user's local time.
 
 ### 2. Web app (when added)
 
@@ -64,7 +65,7 @@ ny-open-futures-terminal/
       main.rs       # Entrypoint
       config.rs     # Env config
       session.rs    # NY session, OR bounds (chrono-tz)
-      api.rs        # Axum routes, CORS, /health
+      api.rs        # Axum routes, CORS, /health, /api/session/today
       data.rs       # Data adapters (stub)
       backtest.rs   # Backtest (stub)
       setup.rs      # Setup ranking / today matcher (stub)
@@ -105,7 +106,7 @@ ny-open-futures-terminal/
 3. **Env and secrets**  
    Ensure `engine/.env` is not committed and keys are read from env in config. Add `.env.example` with empty keys and document in README (done above).
 
-After that: implement `data` (fetch + cache), then ORB in `backtest`, then setup ranking and today-matcher, then alerts and n8n, then the Next.js UI.
+After that: implement `data` (fetch + cache), then ORB in `backtest`, then setup ranking and today-matcher, then alerts and n8n, then the Next.js UI (OLED black, Okabe-Ito colorblind-safe palette).
 
 ---
 

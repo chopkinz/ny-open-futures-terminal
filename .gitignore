@@ -41,6 +41,10 @@ data/*.parquet
 web/.env.local
 engine/.env
 
+# Rust
+engine/target/
+target/
+
 # IDE and OS
 .idea/
 .vscode/
